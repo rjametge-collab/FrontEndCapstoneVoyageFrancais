@@ -4,6 +4,7 @@ const MongoStore = require("connect-mongo").default;
 const cors = require("cors");
 const authRoutes = require("./routes/authRoutes");
 const destinationRoutes = require("./routes/destinationRoutes");
+const lessonRoutes = require("./routes/lessonRoutes");  
 
 const app = express();
 
@@ -43,5 +44,8 @@ app.use("/api/destinations", destinationRoutes);
 
 // API Routes
 app.use("/api", require("./routes/api"));
+
+// Lesson Routes
+app.use("/api/lessons", lessonRoutes);
 
 module.exports = app;
