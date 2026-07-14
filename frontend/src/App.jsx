@@ -6,10 +6,12 @@ import Lessons from "./Pages/Lessons";
 import Trips from "./Pages/Trips";
 import Login from "./Pages/Login";
 import Register from "./Pages/Register";
+import Navbar from "./components/Navbar";
 
 function App() {
   return (
     <BrowserRouter>
+      <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/destinations" element={<Destinations />} />

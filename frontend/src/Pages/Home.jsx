@@ -2,79 +2,74 @@ import { Link } from "react-router-dom";
 
 function Home() {
   return (
-    <div className="min-h-screen bg-slate-50">
+    <div>
 
-      {/* Navigation */}
-      <nav className="bg-blue-900 text-white px-8 py-4 flex justify-between items-center">
+      {/* Hero Section */}
+      <section className="bg-blue-800 text-white py-20">
+        <div className="max-w-6xl mx-auto px-6 text-center">
 
-        <h1 className="text-3xl font-bold">
-          🇫🇷 Voyage Français
-        </h1>
+          <div className="mb-6 flex flex-col items-center gap-4">
+            <img
+              src="/logo.png"
+              alt="Voyage Francais logo"
+              className="h-20 w-20 rounded-lg object-contain"
+            />
+            <h1 className="text-5xl font-bold">Voyage Français</h1>
+          </div>
 
-        <div className="flex gap-6">
-          <Link to="/">Home</Link>
-          <Link to="/destinations">Destinations</Link>
-          <Link to="/lessons">Lessons</Link>
-          <Link to="/trips">Trips</Link>
-          <Link to="/login">Login</Link>
-        </div>
+          <p className="text-xl mb-8">
+            Learn French. Discover France. Plan Your Dream Journey.
+          </p>
 
-      </nav>
+          <div className="flex justify-center gap-4">
 
-      {/* Hero */}
-      <section className="text-center py-24 px-6">
+            <Link
+              to="/lessons"
+              className="bg-white text-blue-800 px-6 py-3 rounded-lg font-semibold hover:bg-gray-100"
+            >
+              Start Learning
+            </Link>
 
-        <h2 className="text-6xl font-bold text-blue-900 mb-6">
-          Learn French Through Travel
-        </h2>
+            <Link
+              to="/destinations"
+              className="bg-red-600 px-6 py-3 rounded-lg font-semibold hover:bg-red-700"
+            >
+              Explore France
+            </Link>
 
-        <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-          Discover beautiful destinations across France while learning practical
-          French for real-life conversations.
-        </p>
-
-        <div className="mt-10 flex justify-center gap-4">
-
-          <Link
-            to="/destinations"
-            className="bg-blue-900 text-white px-8 py-4 rounded-lg"
-          >
-            Explore Destinations
-          </Link>
-
-          <Link
-            to="/lessons"
-            className="bg-red-600 text-white px-8 py-4 rounded-lg"
-          >
-            Start Learning
-          </Link>
+          </div>
 
         </div>
-
       </section>
 
-      {/* Featured Destinations */}
-      <section className="max-w-6xl mx-auto py-12">
+      {/* Features */}
+      <section className="max-w-6xl mx-auto py-16 px-6">
 
-        <h3 className="text-4xl font-bold text-center mb-10">
-          Featured Destinations
-        </h3>
+        <h2 className="text-3xl font-bold text-center mb-10">
+          Why Voyage Français?
+        </h2>
 
         <div className="grid md:grid-cols-3 gap-8">
 
-          <div className="bg-white rounded-xl shadow-lg p-6">
-            <h4 className="text-2xl font-bold">🗼 Paris</h4>
-            <p>The City of Light.</p>
+          <div className="shadow-lg rounded-lg p-6 text-center">
+            <h3 className="text-2xl mb-4">📚 Learn French</h3>
+            <p>
+              Practice useful vocabulary and phrases before your trip.
+            </p>
           </div>
 
-          <div className="bg-white rounded-xl shadow-lg p-6">
-            <h4 className="text-2xl font-bold">🌊 Nice</h4>
-            <p>The French Riviera.</p>
+          <div className="shadow-lg rounded-lg p-6 text-center">
+            <h3 className="text-2xl mb-4">🗼 Discover France</h3>
+            <p>
+              Explore famous destinations and hidden gems across France.
+            </p>
           </div>
 
-          <div className="bg-white rounded-xl shadow-lg p-6">
-            <h4 className="text-2xl font-bold">🍷 Bordeaux</h4>
-            <p>World-famous vineyards.</p>
+          <div className="shadow-lg rounded-lg p-6 text-center">
+            <h3 className="text-2xl mb-4">✈️ Plan Your Trip</h3>
+            <p>
+              Organize your itinerary and keep all your travel plans in one place.
+            </p>
           </div>
 
         </div>
