@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
 
-const links = [
+const guestLinks = [
   { to: "/", label: "Home" },
   { to: "/destinations", label: "Destinations" },
   { to: "/lessons", label: "Lessons" },
@@ -10,11 +10,27 @@ const links = [
   { to: "/register", label: "Register" },
 ];
 
-function Navbar() {
+const memberLinks = [
+  { to: "/", label: "Home" },
+  { to: "/destinations", label: "Destinations" },
+  { to: "/lessons", label: "Lessons" },
+  { to: "/trips", label: "Trips" },
+];
+
+function Navbar({ currentUser, onUserChange }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isAccountMenuOpen, setIsAccountMenuOpen] = useState(false);
+  const links = currentUser ? memberLinks : guestLinks;
 
   function handleLinkClick() {
     setIsMenuOpen(false);
+    setIsAccountMenuOpen(false);
+  }
+
+  function handleLogout() {
+    onUserChange(null);
+    setIsMenuOpen(false);
+    setIsAccountMenuOpen(false);
   }
 
   return (
@@ -60,6 +76,38 @@ function Navbar() {
                 {link.label}
               </NavLink>
             ))}
+
+            {currentUser ? (
+              <div className="relative">
+                <button
+                  type="button"
+                  onClick={() => setIsAccountMenuOpen((open) => !open)}
+                  className="rounded-full bg-slate-100 px-3 py-1.5 text-sm font-medium text-slate-700 transition hover:bg-slate-200"
+                  aria-expanded={isAccountMenuOpen}
+                  aria-label="Toggle account menu"
+                >
+                  My Account
+                </button>
+
+                {isAccountMenuOpen ? (
+                  <div className="absolute right-0 mt-2 w-56 rounded-2xl border border-slate-200 bg-white p-2 shadow-lg">
+                    <div className="border-b border-slate-100 px-3 py-2">
+                      <p className="text-sm font-semibold text-slate-900">
+                        {currentUser.name || currentUser.firstName}
+                      </p>
+                      <p className="text-xs text-slate-500">{currentUser.email}</p>
+                    </div>
+                    <button
+                      type="button"
+                      onClick={handleLogout}
+                      className="mt-2 w-full rounded-xl px-3 py-2 text-left text-sm font-medium text-slate-700 transition hover:bg-slate-100"
+                    >
+                      Logout
+                    </button>
+                  </div>
+                ) : null}
+              </div>
+            ) : null}
           </nav>
         </div>
 
@@ -82,6 +130,21 @@ function Navbar() {
                 {link.label}
               </NavLink>
             ))}
+
+            {currentUser ? (
+              <>
+                <div className="rounded-md bg-slate-100 px-3 py-2 text-sm font-medium text-slate-700">
+                  Signed in as {currentUser.firstName || currentUser.name}
+                </div>
+                <button
+                  type="button"
+                  onClick={handleLogout}
+                  className="rounded-md px-3 py-2 text-left text-sm font-medium text-slate-700 transition hover:bg-slate-100"
+                >
+                  Logout
+                </button>
+              </>
+            ) : null}
           </nav>
         ) : null}
       </div>
