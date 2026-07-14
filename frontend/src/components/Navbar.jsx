@@ -12,6 +12,7 @@ const guestLinks = [
 
 const memberLinks = [
   { to: "/", label: "Home" },
+  { to: "/dashboard", label: "Dashboard" },
   { to: "/destinations", label: "Destinations" },
   { to: "/lessons", label: "Lessons" },
   { to: "/trips", label: "Trips" },
@@ -97,13 +98,33 @@ function Navbar({ currentUser, onUserChange }) {
                       </p>
                       <p className="text-xs text-slate-500">{currentUser.email}</p>
                     </div>
-                    <button
-                      type="button"
-                      onClick={handleLogout}
-                      className="mt-2 w-full rounded-xl px-3 py-2 text-left text-sm font-medium text-slate-700 transition hover:bg-slate-100"
-                    >
-                      Logout
-                    </button>
+                    <div className="mt-2 space-y-1">
+
+  <NavLink
+    to="/dashboard"
+    onClick={handleLinkClick}
+    className="block rounded-xl px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-100"
+  >
+    Dashboard
+  </NavLink>
+
+  <NavLink
+    to="/trips"
+    onClick={handleLinkClick}
+    className="block rounded-xl px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-100"
+  >
+    My Trips
+  </NavLink>
+
+  <button
+    type="button"
+    onClick={handleLogout}
+    className="w-full rounded-xl px-3 py-2 text-left text-sm font-medium text-red-600 hover:bg-red-50"
+  >
+    Logout
+  </button>
+
+</div>
                   </div>
                 ) : null}
               </div>

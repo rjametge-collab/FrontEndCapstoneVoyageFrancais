@@ -8,6 +8,7 @@ import Trips from "./Pages/Trips";
 import Login from "./Pages/Login";
 import Register from "./Pages/Register";
 import Navbar from "./components/Navbar";
+import Dashboard from "./Pages/Dashboard";
 
 const USER_STORAGE_KEY = "voyage-francais-user";
 
@@ -49,6 +50,9 @@ function App() {
         <Route path="/trips" element={<Trips />} />
         <Route path="/login" element={<Login onUserChange={handleUserChange} />} />
         <Route path="/register" element={<Register onUserChange={handleUserChange} />} />
+        <Route path="/dashboard"
+        element={<Dashboard currentUser={currentUser} />}
+/>
       </Routes>
     </BrowserRouter>
   );
